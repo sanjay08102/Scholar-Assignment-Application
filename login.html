@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="login.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<div class="home">
+
+<div class="leftcontainer">
+   
+</div>
+
+  <div class="rightcontainer">
+  <form class="modal-content animate" id="loginForm" method="post">
+    <div class="imgcontainer">
+      
+      <img src="./images/usr (2).jpg" alt="Avatar" class="avatar">
+    </div>
+    <h1 style="text-align: center;">WELCOME</h1>
+
+    <div class="container">
+        
+      <label for="uname" style="font-size: 15px;">Username</label>
+      <div style="display: flex; position: relative;">
+      <input type="text" id="uname" name="uname" onfocus="Changecolor('txt')" onblur="backtonormal('txt')">
+      <i class="fa fa-user licon" style="font-size: 28px; padding-left: 6px;"></i>
+    </div>
+
+      <label for="psw" style="font-size: 15px;" >Password</label>
+      <div style="display: flex; position: relative;">
+      <input type="password" id="password" name="psw" onfocus="Changecolor('pass')" onblur="backtonormal('pass')" required>
+      <!-- <img src="./images/lockgrey.png" alt="" class="licon"> -->
+      <i class="fa fa-lock licon" style="font-size: 28px; padding-left: 6px;"></i>
+    </div>
+    <div class="regcontainer">
+        <p class="regdiv">Don't have an account? <span><a href="Registration.html">Register</a></span></p>
+        <a href="#"class="fp">Forget Password?</a>
+    </div>
+      <button type="submit" class="loginbtn" onclick="login(event)">LOGIN</button>
+     
+    </div>
+  </form>
+</div>
+</div>
+
+<script src="./script.js"></script>
+</body>
+</html>
