@@ -1,3 +1,4 @@
+var url = 'http://localhost:3000/'
 async function login(e) {
     e.preventDefault(); // Corrected method name
 
@@ -7,7 +8,7 @@ async function login(e) {
         username: username,
         password: password
     };
-    loginUrl = 'http://localhost:3000/signin';
+    loginUrl = url + 'login';
 
     const response = await fetch(loginUrl, {
         method: 'POST',
@@ -16,8 +17,13 @@ async function login(e) {
         },
         body: JSON.stringify(data)
     })
-    const res = await response.json();
-    alert(res.message);
+    const res = await response;
+    if(res.status == 200)  {
+        alert("Login successfully")
+    } else {
+        alert("User Not found");
+    } 
+    window.location.reload(); 
 }
 
 function Changecolor(type) {
@@ -44,10 +50,37 @@ function backtonormal(type) {
 window.onload = () => {
     document.querySelector(".fa-user").style.color = "#dcdada";
     document.querySelector(".fa-lock").style.color = "#dcdada";
-  };
-  function register(){
+};
+async function register() {
     var email = document.getElementById("email").value;
-    var pass = document.getElementById("password").value;
-    var username = document.getElementById("uname").value;
-    var password = document.getElementById("password").value;
-  }
+    var pass = document.getElementById("psw").value;
+    var passRepeat = document.getElementById("psw-repeat").value;
+    var regex =/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?!.* ).{8,16}$/;
+    var arith = regex.test(pass);
+    // var arith = true;s
+    if (arith) {
+        if (pass == passRepeat) {
+            const regData = {
+                email: email,
+                password: pass
+            };
+            var RegistrationUrl = url + 'Registration';
+
+            const response = await fetch(RegistrationUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(regData)
+            })
+            const res = await response.json();
+           alert(res.message)
+            window.location.reload();
+
+        }else {
+        alert("Password doesn't match...Try again");
+    } 
+} else {
+    alert("Password should atleast obtain 1 special character,capital letter")
+}
+}
